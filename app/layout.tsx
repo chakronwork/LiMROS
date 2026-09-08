@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Kanit } from "next/font/google";
+import { Kanit, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const kanit = Kanit({
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   subsets: ["latin", "thai"],
+  variable: "--font-kanit",
+});
+
+const fraunces = Fraunces({
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-fraunces",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th">
+    <html lang="th" className={`${kanit.variable} ${fraunces.variable}`}>
       <body className={kanit.className}>{children}</body>
     </html>
   );
